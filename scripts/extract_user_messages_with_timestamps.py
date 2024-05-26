@@ -13,9 +13,15 @@ with open(log_file_path, 'r') as file:
 # ユーザーのメッセージを抽出する関数
 def extract_user_messages(data):
     user_messages = []
+    visited = set()  # 訪問済みノードのセット
 
-    def traverse(node):
-        if 'message' in node and node['message']:
+    def traverse(node_id):
+        if node_id in visited:
+            return  # 既に訪問したノードはスキップ
+        visited.add(node_id)
+        
+        node = data['mapping'].get(node_id)
+        if node and 'message' in node and node['message']:
             message = node['message']
             if message['author']['role'] == 'user':
                 content_parts = message['content']['parts']
@@ -23,11 +29,10 @@ def extract_user_messages(data):
                 for part in content_parts:
                     user_messages.append((create_time, part))
         for child_id in node.get('children', []):
-            if child_id in data['mapping']:
-                traverse(data['mapping'][child_id])
+            traverse(child_id)
 
-    for node_id, node in data['mapping'].items():
-        traverse(node)
+    for node_id in data['mapping']:
+        traverse(node_id)
 
     return user_messages
 
