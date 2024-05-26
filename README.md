@@ -40,25 +40,14 @@ sudo apt install jq
 
 
 
-## セットアップ
 
-1. リポジトリをクローンします。
-
-```bash
-git clone https://github.com/yourusername/chatgpt-conversation-extractor.git
-cd chatgpt-conversation-extractor
-```
-
-2. フォルダを作成し、ファイルを移動します。
 
 
 ## 使用方法
 
-指定したタイトル名の会話を抽出し、ユーザーのメッセージを含むファイルを生成します。
+すべてのフォルダを配置する。
 
-### 例
-
-タイトルが「TITLE」の場合：
+## タイトルが「TITLE」の場合：
 
 ```bash
 ./scripts/extract_conversation.sh "TITLE"
