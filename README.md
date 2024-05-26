@@ -58,13 +58,13 @@ cd chatgpt-conversation-extractor
 
 ### 例
 
-タイトルが「仕事プレッシャーと日常ジョーク」の場合：
+タイトルが「TITLE」の場合：
 
 ```bash
-./scripts/extract_conversation.sh "仕事プレッシャーと日常ジョーク"
+./scripts/extract_conversation.sh "TITLE"
 ```
 
-生成されたユーザーメッセージは、`output_files/user_messages_with_timestamps_仕事プレッシャーと日常ジョーク.txt` に保存されます。
+生成されたユーザーメッセージは、`output_files/user_messages_with_timestamps_TITLE.txt` に保存されます。
 
 ## ファイルの説明
 
