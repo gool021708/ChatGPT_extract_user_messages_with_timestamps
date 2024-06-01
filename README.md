@@ -50,8 +50,10 @@ sudo apt install jq
 ## タイトルが「TITLE」の場合：
 
 ```bash
-./scripts/extract_conversation.sh "TITLE"
+./scripts/extract_conversation.sh
 ```
+
+プロンプトに従い、抽出したい会話のタイトル名を入力します。
 
 生成されたユーザーメッセージは、`output_files/user_messages_with_timestamps_TITLE.txt` に保存されます。
 
