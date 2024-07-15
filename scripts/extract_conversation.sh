@@ -3,6 +3,19 @@
 # ユーザーにタイトル名を入力させる
 read -p "抽出したい会話のタイトル名を入力してください: " TITLE
 
+# オプションの入力（1行のプロンプトを除外するかどうか）
+read -p "1行のプロンプトを除外しますか？ (yes/no): " EXCLUDE_SINGLE_LINE
+EXCLUDE_OPTION=""
+if [ "$EXCLUDE_SINGLE_LINE" == "yes" ]; then
+    EXCLUDE_OPTION="--exclude-single-line"
+fi
+
+# オプションの入力（50文字以下のメッセージを除外するかどうか）
+read -p "50文字以下のメッセージを除外しますか？ (yes/no): " EXCLUDE_SHORT_MESSAGES
+if [ "$EXCLUDE_SHORT_MESSAGES" == "yes" ]; then
+    EXCLUDE_OPTION="$EXCLUDE_OPTION --exclude-short-messages"
+fi
+
 # JSONファイルのパス
 JSON_FILE="input_files/conversations.json"
 FILTERED_FILE="input_files/filtered_conversation.json"
@@ -21,6 +34,4 @@ SAFE_TITLE=$(echo "$TITLE" | tr ' ' '_')
 OUTPUT_FILE="output_files/user_messages_with_timestamps_${SAFE_TITLE}.txt"
 
 # Pythonスクリプトを実行して、ユーザーのメッセージを抽出
-python3 scripts/extract_user_messages_with_timestamps.py "$FILTERED_FILE" "$OUTPUT_FILE"
-
-
+python3 scripts/extract_user_messages_with_timestamps.py "$FILTERED_FILE" "$OUTPUT_FILE" $EXCLUDE_OPTION
