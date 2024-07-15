@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# 結合オプションを聞く / Prompt to enter titles to combine
-echo "結合する会話のタイトルを入力してください（改行で区切って入力し、すべて入力後に 'end' と入力してください）："
-echo "Enter the titles of the conversations to combine (separate each title with a newline, type 'end' when done):"
+# タイトルを入力するプロンプト / Prompt to enter titles
+echo "抽出したい会話のタイトルを入力してください。改行し 'end' と入力してください。複数の場合は改行で区切って 'end' と入力してください。"
+echo "Enter the titles of the conversations to extract. Type 'end' after the title. For multiple titles, separate each with a newline and then type 'end'."
 TITLE_LIST=()
 while true; do
     read -r TITLE
