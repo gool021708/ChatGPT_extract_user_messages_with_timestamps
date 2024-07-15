@@ -5,6 +5,8 @@ from datetime import datetime
 # コマンドライン引数からファイルパスを取得
 log_file_path = sys.argv[1]
 output_file_path = sys.argv[2]
+exclude_single_line = '--exclude-single-line' in sys.argv
+exclude_short_messages = '--exclude-short-messages' in sys.argv
 
 # JSONファイルの読み込み
 with open(log_file_path, 'r') as file:
@@ -27,7 +29,13 @@ def extract_user_messages(data):
                 content_parts = message['content']['parts']
                 create_time = datetime.fromtimestamp(message['create_time']).strftime('%Y-%m-%d %H:%M:%S')
                 for part in content_parts:
-                    user_messages.append((create_time, part))
+                    # 1行のメッセージを除外するオプションを処理
+                    if isinstance(part, str):
+                        if exclude_single_line and len(part.splitlines()) == 1:
+                            continue
+                        if exclude_short_messages and len(part) <= 50:
+                            continue
+                        user_messages.append((create_time, part))
         for child_id in node.get('children', []):
             traverse(child_id)
 
