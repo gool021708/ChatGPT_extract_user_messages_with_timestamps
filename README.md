@@ -14,7 +14,7 @@ ChatGPT_extract_user_messages_with_timestamps-main
 │  README.md
 │
 ├─input_files
-│      conversations.json  # 会話ログを格納
+│      conversations.json  # 会話ログを格納（ChatGPTのデータエクスポート機能でダウンロードしたZipにある会話ログファイル）
 │
 ├─output_files
 │      user_messages_with_timestamps_＜TITLE＞.txt  # 抽出結果
@@ -103,7 +103,7 @@ ChatGPT_extract_user_messages_with_timestamps-main
 │  README.md
 │
 ├─input_files
-│      conversations.json  # Stores conversation logs
+│      conversations.json  # Stores conversation logs (Conversation log file in the Zip file downloaded using ChatGPT's data export function)
 │
 ├─output_files
 │      user_messages_with_timestamps_＜TITLE＞.txt  # Extracted results
