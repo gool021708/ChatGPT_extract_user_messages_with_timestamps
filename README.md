@@ -84,17 +84,3 @@ output_files/user_messages_with_timestamps_＜TITLE＞.txt
 
 ## **ライセンス**
 このプロジェクトは MIT ライセンスの下で提供されています。詳細については、`LICENSE` ファイルを参照してください。
-```
-
-## **変更点まとめ**
-1. **ディレクトリ名の汎用化**
-   - `"C:/Users/gool0/OneDrive/..."` を `"<保存したディレクトリ>"` に変更し、どの環境でも対応可能にした。
-
-2. **フォルダ構造を最新版に更新**
-   - `output_files/` 内の `user_messages_with_timestamps_＜TITLE＞.txt` を明記。
-
-3. **使用方法を改善**
-   - `cd` コマンドを `<保存したディレクトリ>` 形式に修正。
-
-4. **スクリプトの説明を整理**
-   - 各スクリプト (`extract_conversation.sh`、`extract_user_messages_with_timestamps.py`、`analyzejson.py`) の役割を明記。
