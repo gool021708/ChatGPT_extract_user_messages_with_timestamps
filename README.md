@@ -1,9 +1,11 @@
 # ChatGPT Conversation Extractor
 
+**English documentation follows after the Japanese version.**
+
 このリポジトリは、指定されたタイトルの会話を `conversations.json` から抽出し、ユーザーのメッセージを含むファイルを生成するためのスクリプトを提供します。
 
-## **Description**
-This project extracts conversations with a specified title from an exported ChatGPT conversation log and saves only the user's messages. This helps efficiently collect and analyze user input for specific conversation topics.
+## **概要**
+このプロジェクトは、エクスポートされた ChatGPT の会話ログから特定のタイトルを持つ会話を抽出し、ユーザーが入力したメッセージのみを保存することで、特定の会話トピックに関するユーザーの入力を効率的に収集・分析できるようにします。
 
 ## **フォルダ構造**
 ```
@@ -84,3 +86,92 @@ output_files/user_messages_with_timestamps_＜TITLE＞.txt
 
 ## **ライセンス**
 このプロジェクトは MIT ライセンスの下で提供されています。詳細については、`LICENSE` ファイルを参照してください。
+
+---
+
+# **ChatGPT Conversation Extractor (English Version)**
+
+This repository provides scripts to extract conversations with a specified title from `conversations.json` and generate a file containing only the user's messages.
+
+## **Description**
+This project extracts conversations with a specified title from an exported ChatGPT conversation log and saves only the user's messages. This helps efficiently collect and analyze user input for specific conversation topics.
+
+## **Folder Structure**
+```
+ChatGPT_extract_user_messages_with_timestamps-main
+│  LICENSE
+│  README.md
+│
+├─input_files
+│      conversations.json  # Stores conversation logs
+│
+├─output_files
+│      user_messages_with_timestamps_＜TITLE＞.txt  # Extracted results
+│
+├─scripts
+│      extract_conversation.sh  # Main shell script
+│      extract_user_messages_with_timestamps.py  # Python script for extracting user messages
+│
+└─tools
+       analyzejson.py  # Script for analyzing JSON structure
+```
+
+## **Prerequisites**
+- **WSL (Windows Subsystem for Linux)** must be installed
+- **Python 3** must be installed
+- **`jq`** must be installed
+- **`dos2unix`** must be installed (if needed)
+
+### **Installing jq**
+```bash
+sudo apt update
+sudo apt install jq
+```
+
+## **Usage**
+Place all folders in the appropriate directory and follow these steps:
+
+### **Step 1: Navigate to the required directory**
+```bash
+cd <your_directory>/ChatGPT_extract_user_messages_with_timestamps-main
+```
+
+### **Step 2: Execute the conversation extraction**
+```bash
+bash scripts/extract_conversation.sh
+```
+
+Follow the prompt to enter the title of the conversation you want to extract.
+
+### **Output**
+The extracted user messages will be saved in:
+```
+output_files/user_messages_with_timestamps_＜TITLE＞.txt
+```
+
+---
+
+## **Script Descriptions**
+### `scripts/extract_conversation.sh`
+- Extracts conversations based on a specified title and calls a Python script.
+
+### `scripts/extract_user_messages_with_timestamps.py`
+- Extracts user messages and timestamps from the extracted conversation and saves them to a file.
+
+### `tools/analyzejson.py`
+- Analyzes the structure of a given JSON file and provides a simplified schema.
+
+---
+
+## **Error Handling**
+- **If no argument is provided:**
+  ```bash
+  Usage: python3 script.py <json_file>
+  ```
+- **If the JSON file is missing or invalid, an error message is displayed.**
+
+---
+
+## **License**
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
